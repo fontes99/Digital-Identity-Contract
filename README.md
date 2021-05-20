@@ -10,7 +10,7 @@ A blockchain contract for Digital Identity
 - Birth date
 - Expiration date
 
-### To Implement
+## To Implement
 - Has a driving license or not
 - Blood type
 - Physical conditions
