@@ -32,10 +32,6 @@ def getInfo() -> uint256:
 def registerPerson():
     
     
-    def teste():
-    pass
-
-
 #Consulta Infos Ether
 
 def nome_eth():
