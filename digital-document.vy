@@ -2,17 +2,22 @@
 
 clerk: address
 
-struct Document:
+struct Document_ETH:
     owner: address
     name: bytes32
-    Gender: uint256  
-    CitizenID: uint256
+    BirthDate: bytes32
     Mother: address
     Father: address
-    BirthDate: bytes32
-    ExpDate: uint256
 
-people: public(HashMap[address, Document])
+struct Document_IPFS:
+    CitizenID: uint256
+    drivers_license: uint256
+    CPF: uint256
+    marital_status: uint256
+    nationality: uint256  
+
+
+people: public(HashMap[address, Document_ETH])
 
 @external
 def __init__(clerk: address):
@@ -25,7 +30,4 @@ def getInfo() -> uint256:
 
 @external
 def registerPerson():
-    pass
-
-def teste():
     pass
