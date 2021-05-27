@@ -1,4 +1,3 @@
-# Blockchain contract for Digital identity
 
 clerk: address
 
@@ -25,4 +24,7 @@ def getInfo() -> uint256:
 
 @external
 def registerPerson():
+    pass
+
+def teste():
     pass
