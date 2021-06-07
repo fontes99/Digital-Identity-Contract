@@ -55,11 +55,3 @@ def civil_est_ipfs():
 def nation_ipfs():
     return concat ("Nacionalidade: ", IPFS(msg.sender).nation())
 
-
-    - IPFS
-    - RG
-    - CPF
-    - CNH
-    - Genero
-    - Estado Civil
-    - Nacionalidade
