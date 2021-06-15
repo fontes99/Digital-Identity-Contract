@@ -35,5 +35,25 @@ def registerPerson(adrs:address, nam:String[100], dob:uint256, mID:address, fID:
 
 @view
 @external
-def lookup(name: address) -> address:
+def getClearkAdress(name: address) -> address:
     return self.database[name].clerk
+    
+
+@view
+@external
+def getPersonName(name: address) -> String[100]:
+    return self.database[name].name
+    
+@view
+@external
+def getPersonMotherAddress(name: address) -> address:
+    return self.database[name].mother_ID
+
+
+@view
+@external
+def getPersonFatherAddress(name: address) -> address:
+    return self.database[name].father_ID
+    
+    
+
