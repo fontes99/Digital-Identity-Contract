@@ -12,7 +12,7 @@ struct Document:
     Date_of_Birth: uint256
     mother_ID: address
     father_ID: address
-    IPFS: String[100]
+    IPFS: address
 
 database: public(HashMap[address, Document])
 
@@ -21,7 +21,7 @@ def __init__(clerk: address):
     self.clerk = clerk
 
 @external
-def registerPerson(adrs:address, nam:String[100], dob:uint256, mID:address, fID:address, ipfsID:String[100]):
+def registerPerson(adrs:address, nam:String[100], dob:uint256, mID:address, fID:address, ipfsID:address):
     self.database[adrs] = Document({
         clerk: self.clerk,
         name: nam,
@@ -32,34 +32,8 @@ def registerPerson(adrs:address, nam:String[100], dob:uint256, mID:address, fID:
     })
 
 
-#Consulta Infos Ether
 
-import Ethereum as ETH
-
-
-@external
 @view
-def nome_eth():
-    return concat ("Name: ", database[msg.sender].name)
-    
 @external
-@view
-def birth_eth():
-    return concat ("Birthday: ", database[msg.sender].Date_of_Birth)
-
-@external
-@view
-def mom_id_eth():
-    return concat ("Mom ID: ", database[msg.sender].mother_ID)
-
-@external
-@view
-def dad_id_eth():
-    return concat ("Dad ID: ", database[msg.sender].father_ID)
-
-@external
-@view
-def address_eth():
-    return concat ("IPFS Adress: ", database[msg.sender].IPFS)
-
-
+def lookup(name: address) -> address:
+    return self.database[name].clerk
