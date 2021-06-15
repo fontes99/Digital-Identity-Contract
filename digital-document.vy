@@ -27,6 +27,3 @@ def __init__(clerk: address):
 @external
 def getInfo() -> uint256:
     return 0
-
-@external
-def registerPerson():
