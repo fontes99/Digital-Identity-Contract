@@ -11,7 +11,40 @@ obj = {
     'NACION' : 55,
 }
 
+arrayDados = [] 
+
+hashDocs = "Qmdxw6ubiYCviw9UTkJbNEuFoExyenTP1g3x1NjmbvguED"
+
 var buf = Buffer.from(JSON.stringify(obj))
-ipfs.add(buf, (err, ipfsHash) => {
-  console.log(ipfsHash, "https://cloudflare-ipfs.com/ipfs/" + ipfsHash[0].hash)
-})
+
+
+const fetch = require('node-fetch');
+
+let url = "https://cloudflare-ipfs.com/ipfs/" + hashDocs;
+
+let settings = { method: "Get" };
+
+fetch(url, settings)
+.then(res => res.json())
+.then((json) => {
+    ipfs.add(buf, (err, ipfsHash) => {
+        
+        console.log(json)
+
+        jsonArray = json['json']
+        
+        jsonArray.push("https://cloudflare-ipfs.com/ipfs/" + ipfsHash[0].hash)
+        
+        json['json'] = jsonArray
+        
+        json['lastblock']
+        
+        var buff = Buffer.from(JSON.stringify(json))
+
+        ipfs.add(buff, (err, ipfsHashh) => {
+            // json.push("https://cloudflare-ipfs.com/ipfs/" + ipfsHashh[0].hash)
+        
+        console.log(ipfsHashh, "https://cloudflare-ipfs.com/ipfs/" + ipfsHashh[0].hash)
+        })
+    })
+});
