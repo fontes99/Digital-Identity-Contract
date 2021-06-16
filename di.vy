@@ -12,7 +12,7 @@ struct Document:
     Date_of_Birth: uint256
     mother_ID: address
     father_ID: address
-    IPFS: address
+    IPFS: String[100]
 
 database: public(HashMap[address, Document])
 
@@ -21,7 +21,10 @@ def __init__(clerk: address):
     self.clerk = clerk
 
 @external
-def registerPerson(adrs:address, nam:String[100], dob:uint256, mID:address, fID:address, ipfsID:address):
+def registerPerson(adrs:address, nam:String[100], dob:uint256, mID:address, fID:address, ipfsID:String[100]):
+    
+    assert msg.sender == self.clerk
+    
     self.database[adrs] = Document({
         clerk: self.clerk,
         name: nam,
@@ -31,7 +34,19 @@ def registerPerson(adrs:address, nam:String[100], dob:uint256, mID:address, fID:
         IPFS: ipfsID
     })
 
+@external
+def updateName(adrs:address, newName:String[100]):
 
+    assert msg.sender == self.clerk
+
+    self.database[adrs].name = newName
+
+@external
+def updateIPFSid(adrs:address, ipfsID:String[100]):
+
+    assert msg.sender == self.clerk
+
+    self.database[adrs].IPFS = ipfsID
 
 @view
 @external
