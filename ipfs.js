@@ -3,17 +3,12 @@ const IPFS = require('ipfs-api')
 const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
 obj = {
-    'RG' : 19210093, 
-    'CPF' : 1234675432,
-    'CNH' : 1234500,
-    'GENERO' : 'helicóptero',
-    'EST_CIVIL' : 0,
-    'NACION' : 55,
+    'CARTERINHA DO PALMEIRAS' : 666 
 }
 
 arrayDados = [] 
 
-hashDocs = "Qmdxw6ubiYCviw9UTkJbNEuFoExyenTP1g3x1NjmbvguED"
+hashDocs = "QmUhk5rTbt6f7DMNy7yF9zPUSdRMiPA68VPLxpM48gT86W"
 
 var buf = Buffer.from(JSON.stringify(obj))
 
@@ -37,7 +32,7 @@ fetch(url, settings)
         
         json['json'] = jsonArray
         
-        json['lastblock']
+        json['lastblock'] = hashDocs
         
         var buff = Buffer.from(JSON.stringify(json))
 
